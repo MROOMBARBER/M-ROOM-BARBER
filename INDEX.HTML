@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M ROOM BARBER - Digital Card</title>
+    <!-- Font Awesome for beautiful icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --whatsapp-color: #25D366;
+            --maps-color: #4285F4;
+            --instagram-color: #E1306C;
+            --review-color: #EA4335; 
+            --main-dark: #1a1a1a;
+            --gold-color: #d4af37;
+            --bg-gradient: linear-gradient(135deg, #1a1a1a 0%, #434343 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #e5e5e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: var(--bg-gradient);
+            padding: 45px 20px;
+            color: white;
+            border-bottom: 4px solid var(--gold-color);
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--main-dark);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 3px solid var(--gold-color);
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold-color);
+        }
+
+        p.subtitle {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        .links-container {
+            padding: 35px 25px;
+            background: #ffffff;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            padding: 18px 25px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn i {
+            font-size: 22px;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .whatsapp { background-color: var(--whatsapp-color); }
+        .maps { background-color: var(--maps-color); }
+        .instagram { background-color: var(--instagram-color); }
+        .review { background-color: var(--main-dark); border: 1px solid var(--gold-color); color: var(--gold-color); }
+        
+        .review i { color: white; }
+
+        .footer {
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="profile-img">
+            <i class="fas fa-cut"></i>
+        </div>
+        <h1>M ROOM BARBER</h1>
+        <p class="subtitle">Barbier & Coiffeur Professionnel</p>
+    </div>
+
+    <div class="links-container">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/212629006432" target="_blank" class="btn whatsapp">
+            <i class="fab fa-whatsapp"></i> WHATSAPP
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/THEMROOMOFFICIEL_" target="_blank" class="btn instagram">
+            <i class="fab fa-instagram"></i> INSTAGRAM
+        </a>
+
+        <!-- Google Maps -->
+        <a href="https://www.google.com/maps" target="_blank" class="btn maps">
+            <i class="fas fa-map-marker-alt"></i> GOOGLE MAPS
+        </a>
+
+        <!-- Google Review -->
+        <a href="https://www.google.com/search?client=safari&hs=iL79&sca_esv=cb0b2358a0071c17&rls=en&channel=31&biw=1792&bih=1040&sxsrf=ANbL-n5AhLIc6XYBO8Ab4ZGWxAaoBCn8FQ:1772510787663&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOcvVMCu0vbex3UK9zwa09BwsJHkHaEzqAOcP9eHUtX8wL-v74MfjZCh410JYDXpGin1k5xiUvgionGwtQ6EGcgcdFRTH&q=The+M+Room+Barber+Avis&sa=X&ved=2ahUKEwj8w--e7YKTAxWTSPEDHbhOILAQ0bkNegQIJBAF" target="_blank" class="btn review">
+            <i class="fab fa-google"></i> AVIS GOOGLE
+        </a>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 M ROOM BARBER - Scannez pour nous suivre
+    </div>
+</div>
+
+<script>
+    // Verification logic
+    window.onload = () => {
+        console.log("M ROOM BARBER Digital Card is ready for NFC deployment.");
+    };
+</script>
+
+</body>
+</html>
