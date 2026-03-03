@@ -8,11 +8,11 @@
     <title>M ROOM BARBER</title>
     <meta name="description" content="M ROOM BARBER - Barbier & Coiffeur Professionnel">
     
-    <!-- Open Graph -->
+    <!-- Open Graph (WhatsApp/Instagram Preview) -->
     <meta property="og:title" content="M ROOM BARBER">
-    <meta property="og:description" content="Barbier & Coiffeur Professionnel à votre service.">
+    <meta property="og:description" content="L'excellence du barbier traditionnel.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/svgs/solid/cut.svg">
+    <meta property="og:image" content="logo.png">
 
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,85 +22,86 @@
             --whatsapp-color: #25D366;
             --maps-color: #4285F4;
             --instagram-color: #E1306C;
-            --review-color: #EA4335; 
-            --main-dark: #1a1a1a;
-            --gold-color: #d4af37;
-            --bg-gradient: linear-gradient(135deg, #1a1a1a 0%, #434343 100%);
+            --google-red: #EA4335; 
+            --dark-navy: #0a0e14; /* Al-lawn dyal l-logo */
+            --gold: #c5a059; /* Al-lawn d-dhbi dyal l-logo */
+            --gold-light: #e2c285;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Playfair Display', 'Times New Roman', serif;
         }
 
         body {
-            background: #e5e5e5;
+            background-color: #121212;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            color: white;
         }
 
         .container {
-            background: white;
+            background: var(--dark-navy);
             width: 100%;
             max-width: 400px;
-            border-radius: 30px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
             text-align: center;
-            animation: fadeIn 0.8s ease-out;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            animation: fadeIn 1s ease-in;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .header {
-            background: var(--bg-gradient);
-            padding: 45px 20px;
-            color: white;
-            border-bottom: 4px solid var(--gold-color);
+            padding: 50px 20px 30px;
+            background: radial-gradient(circle, #1a202c 0%, #0a0e14 100%);
+            position: relative;
         }
 
-        .profile-img {
-            width: 110px;
-            height: 110px;
-            background: white;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            color: var(--main-dark);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 3px solid var(--gold-color);
+        /* Border decorative lines like in the logo */
+        .header::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 1px;
+            background: var(--gold);
+            margin: 20px auto 0;
+            opacity: 0.5;
+        }
+
+        .logo-img {
+            width: 180px; /* Kteb l-size dyal l-logo */
+            height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.4));
         }
 
         h1 {
-            font-size: 26px;
-            margin-bottom: 8px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--gold-color);
+            display: none; /* Hit l-smiya kayna f l-logo image */
         }
 
         p.subtitle {
-            font-size: 15px;
-            opacity: 0.9;
-            margin-bottom: 0;
-            font-style: italic;
+            font-size: 14px;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 300;
         }
 
         .links-container {
-            padding: 35px 25px;
-            background: #ffffff;
+            padding: 40px 25px;
         }
 
         .btn {
@@ -108,39 +109,49 @@
             align-items: center;
             text-decoration: none;
             color: white;
-            padding: 18px 25px;
-            border-radius: 12px;
-            margin-bottom: 18px;
-            font-weight: 700;
-            font-size: 16px;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+            border: 1px solid transparent;
         }
 
         .btn:active {
-            transform: scale(0.96);
+            transform: scale(0.95);
         }
 
         .btn i {
-            font-size: 22px;
+            font-size: 20px;
             margin-right: 15px;
-            width: 30px;
+            width: 25px;
             text-align: center;
         }
 
-        .whatsapp { background-color: var(--whatsapp-color); }
-        .instagram { background-color: var(--instagram-color); }
-        .maps { background-color: var(--maps-color); }
-        .review { background-color: var(--main-dark); border: 1px solid var(--gold-color); color: var(--gold-color); }
-        
-        .review i { color: white; }
+        /* Modern Dark Buttons with Gold Accents */
+        .whatsapp { background-color: rgba(37, 211, 102, 0.1); border-color: var(--whatsapp-color); color: var(--whatsapp-color); }
+        .instagram { background-color: rgba(225, 48, 108, 0.1); border-color: var(--instagram-color); color: var(--instagram-color); }
+        .maps { background-color: rgba(66, 133, 244, 0.1); border-color: var(--maps-color); color: var(--maps-color); }
+        .review { background-color: rgba(197, 160, 89, 0.1); border-color: var(--gold); color: var(--gold); }
 
         .footer {
-            padding: 20px;
+            padding: 25px;
+            font-size: 11px;
+            color: #555;
+            background: #05070a;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .est-tag {
             font-size: 12px;
-            color: #777;
-            background: #f9f9f9;
-            border-top: 1px solid #eee;
+            color: var(--gold);
+            margin-top: 5px;
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -148,11 +159,17 @@
 
 <div class="container">
     <div class="header">
-        <div class="profile-img">
+        <!-- Tswira dyal l-logo dyalk -->
+        <img src="logo.png" alt="M ROOM BARBER LOGO" class="logo-img" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
+        
+        <!-- Fallback ila makantch l-tswira -->
+        <div id="alt-logo" style="display:none; font-size: 40px; color: var(--gold); margin-bottom: 15px;">
             <i class="fas fa-cut"></i>
+            <h2 style="font-size: 24px;">M ROOM</h2>
         </div>
-        <h1>M ROOM BARBER</h1>
-        <p class="subtitle">Barbier & Coiffeur Professionnel</p>
+
+        <p class="subtitle">Barbershop</p>
+        <div class="est-tag">EST 2019</div>
     </div>
 
     <div class="links-container">
@@ -166,27 +183,21 @@
             <i class="fab fa-instagram"></i> INSTAGRAM
         </a>
 
-        <!-- Google Maps (Updated Link) -->
+        <!-- Google Maps -->
         <a href="https://www.google.com/maps/place/The+M+Room+Barber/@33.5677466,-7.6537347,17z/data=!3m1!4b1!4m6!3m5!1s0xda7d30e1a6200cd:0x459d3f176cb65559!8m2!3d33.5677466!4d-7.6511598!16s%2Fg%2F11yl1383c3?entry=ttu" target="_blank" class="btn maps">
             <i class="fas fa-map-marker-alt"></i> GOOGLE MAPS
         </a>
 
         <!-- Google Review -->
-        <a href="https://www.google.com/search?client=safari&hs=iL79&sca_esv=cb0b2358a0071c17&rls=en&channel=31&biw=1792&bih=1040&sxsrf=ANbL-n5AhLIc6XYBO8Ab4ZGWxAaoBCn8FQ:1772510787663&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOcvVMCu0vbex3UK9zwa09BwsJHkHaEzqAOcP9eHUtX8wL-v74MfjZCh410JYDXpGin1k5xiUvgionGwtQ6EGcgcdFRTH&q=The+M+Room+Barber+Avis&sa=X&ved=2ahUKEwj8w--e7YKTAxWTSPEDHbhOILAQ0bkNegQIJBAF" target="_blank" class="btn review">
+        <a href="https://www.google.com/search?q=The+M+Room+Barber+Avis&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOcvVMCu0vbex3UK9zwa09BwsJHkHaEzqAOcP9eHUtX8wL-v74MfjZCh410JYDXpGin1k5xiUvgionGwtQ6EGcgcdFRTH" target="_blank" class="btn review">
             <i class="fab fa-google"></i> AVIS GOOGLE
         </a>
     </div>
 
     <div class="footer">
-        &copy; 2026 M ROOM BARBER - Scannez pour nous suivre
+        &copy; 2026 M ROOM BARBER | ALL RIGHTS RESERVED
     </div>
 </div>
-
-<script>
-    window.onload = () => {
-        console.log("M ROOM BARBER - All links updated and verified.");
-    };
-</script>
 
 </body>
 </html>
