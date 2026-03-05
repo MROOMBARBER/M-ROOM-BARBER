@@ -22,9 +22,10 @@
             --whatsapp-color: #25D366;
             --maps-color: #4285F4;
             --instagram-color: #E1306C;
+            --wifi-color: #ffffff;
             --google-red: #EA4335; 
-            --pure-black: #000000; /* K7el nichan */
-            --gold: #c5a059; /* Al-lawn d-dhbi dyal l-logo */
+            --pure-black: #000000;
+            --gold: #c5a059;
             --gold-light: #e2c285;
         }
 
@@ -36,7 +37,12 @@
         }
 
         body {
-            background-color: var(--pure-black); /* Background k7el nichan */
+            /* Background image */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.postimg.cc/Xq4vMtJp/unnamed.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -46,15 +52,17 @@
         }
 
         .container {
-            background: var(--pure-black);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
             width: 100%;
             max-width: 400px;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(197, 160, 89, 0.15); /* Shadow dhbiya khfifa */
+            box-shadow: 0 0 40px rgba(0, 0, 0, 1);
             text-align: center;
-            border: 1px solid rgba(197, 160, 89, 0.4); /* Cadre dhbi bayen */
+            border: 1px solid rgba(197, 160, 89, 0.4);
             animation: fadeIn 1s ease-in;
+            position: relative;
         }
 
         @keyframes fadeIn {
@@ -64,11 +72,9 @@
 
         .header {
             padding: 50px 20px 30px;
-            background: #000000;
             position: relative;
         }
 
-        /* Border decorative lines like in the logo */
         .header::after {
             content: '';
             display: block;
@@ -86,10 +92,6 @@
             filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.5));
         }
 
-        h1 {
-            display: none;
-        }
-
         p.subtitle {
             font-size: 14px;
             color: var(--gold);
@@ -101,7 +103,7 @@
         }
 
         .links-container {
-            padding: 40px 25px;
+            padding: 30px 25px;
         }
 
         .btn {
@@ -111,7 +113,7 @@
             color: white;
             padding: 16px 20px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 600;
             font-size: 15px;
             letter-spacing: 1px;
@@ -119,7 +121,8 @@
             text-transform: uppercase;
             font-family: 'Segoe UI', sans-serif;
             border: 1px solid transparent;
-            background: rgba(255, 255, 255, 0.03); /* Background shafaf chwiya */
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
         }
 
         .btn:active {
@@ -133,17 +136,66 @@
             text-align: center;
         }
 
-        /* Bordered styles for better visibility on black */
         .whatsapp { border-color: var(--whatsapp-color); color: var(--whatsapp-color); }
         .instagram { border-color: var(--instagram-color); color: var(--instagram-color); }
         .maps { border-color: var(--maps-color); color: var(--maps-color); }
         .review { border-color: var(--gold); color: var(--gold); }
+        .wifi { border-color: var(--wifi-color); color: var(--wifi-color); }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #111;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid var(--gold);
+            text-align: center;
+            max-width: 320px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .wifi-qr-only {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px 0 20px;
+            border: 1px solid rgba(197, 160, 89, 0.5);
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+        }
+
+        .close-modal {
+            margin-top: 10px;
+            color: var(--gold);
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 14px;
+            border-bottom: 1px solid var(--gold);
+            display: inline-block;
+            padding-bottom: 2px;
+        }
 
         .footer {
             padding: 25px;
             font-size: 11px;
-            color: #666;
-            background: #000000;
+            color: #888;
+            background: rgba(0, 0, 0, 0.5);
             letter-spacing: 1px;
             font-family: 'Segoe UI', sans-serif;
             border-top: 1px solid rgba(197, 160, 89, 0.1);
@@ -161,10 +213,8 @@
 
 <div class="container">
     <div class="header">
-        <!-- Tswira dyal l-logo dyalk -->
         <img src="logo.png" alt="M ROOM BARBER LOGO" class="logo-img" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
         
-        <!-- Fallback ila makantch l-tswira -->
         <div id="alt-logo" style="display:none; font-size: 40px; color: var(--gold); margin-bottom: 15px;">
             <i class="fas fa-cut"></i>
             <h2 style="font-size: 24px;">M ROOM</h2>
@@ -185,6 +235,11 @@
             <i class="fab fa-instagram"></i> INSTAGRAM
         </a>
 
+        <!-- WiFi Button -->
+        <div onclick="openWifiModal()" class="btn wifi">
+            <i class="fas fa-wifi"></i> WIFI FREE
+        </div>
+
         <!-- Google Maps -->
         <a href="https://www.google.com/maps/place/The+M+Room+Barber/@33.5677466,-7.6537347,17z/data=!3m1!4b1!4m6!3m5!1s0xda7d30e1a6200cd:0x459d3f176cb65559!8m2!3d33.5677466!4d-7.6511598!16s%2Fg%2F11yl1383c3?entry=ttu" target="_blank" class="btn maps">
             <i class="fas fa-map-marker-alt"></i> GOOGLE MAPS
@@ -200,6 +255,37 @@
         &copy; 2026 M ROOM BARBER | ALL RIGHTS RESERVED
     </div>
 </div>
+
+<!-- WiFi Modal -->
+<div id="wifiModal" class="modal">
+    <div class="modal-content">
+        <h3 style="color:var(--gold); margin-bottom: 15px; text-transform: uppercase; font-size: 16px;">M ROOM WIFI ACCESS</h3>
+        
+        <!-- Only the QR Code Image sent by the user -->
+        <img src="https://i.postimg.cc/63L9hzhS/photo-5857188129129827783-y.jpg" class="wifi-qr-only" alt="WiFi QR Code">
+        
+        <p style="font-size: 13px; opacity: 0.8; margin-bottom: 15px;">Scannez pour vous connecter rapidement.</p>
+        
+        <div class="close-modal" onclick="closeWifiModal()">Fermer</div>
+    </div>
+</div>
+
+<script>
+    function openWifiModal() {
+        document.getElementById('wifiModal').style.display = 'flex';
+    }
+
+    function closeWifiModal() {
+        document.getElementById('wifiModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        let modal = document.getElementById('wifiModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>
