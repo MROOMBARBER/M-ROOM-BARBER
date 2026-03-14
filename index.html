@@ -22,7 +22,7 @@
             --whatsapp-color: #25D366;
             --maps-color: #4285F4;
             --instagram-color: #E1306C;
-            --tiktok-color: #00f2ea; /* Couleur TikTok Cyan/Neon */
+            --tiktok-color: #00f2ea;
             --wifi-color: #ffffff;
             --google-red: #EA4335; 
             --pure-black: #000000;
@@ -38,7 +38,7 @@
         }
 
         body {
-            /* Background image */
+            /* Image de fond */
             background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://i.postimg.cc/Xq4vMtJp/unnamed.jpg');
             background-size: cover;
             background-position: center;
@@ -102,6 +102,15 @@
             margin-top: 10px;
             font-family: 'Segoe UI', sans-serif;
             font-weight: 300;
+        }
+
+        .welcome-msg {
+            font-size: 18px;
+            color: var(--gold);
+            margin-top: 15px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: 1px;
         }
 
         .links-container {
@@ -232,6 +241,14 @@
             position: relative;
         }
 
+        .wifi-qr-only {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px 0 20px;
+            border: 1px solid rgba(197, 160, 89, 0.5);
+        }
+
         /* Plein Écran Slider Animation */
         #fullImageModal .modal-content {
             background: transparent;
@@ -288,16 +305,11 @@
             transition: background 0.2s;
         }
 
-        .nav-arrow:active {
-            background: var(--gold);
-            color: black;
-        }
-
         .prev-arrow { left: -5px; }
         .next-arrow { right: -5px; }
 
         .close-modal {
-            margin-top: 20px;
+            margin-top: 15px;
             color: var(--gold);
             cursor: pointer;
             text-transform: uppercase;
@@ -317,13 +329,6 @@
             font-family: 'Segoe UI', sans-serif;
             border-top: 1px solid rgba(197, 160, 89, 0.1);
         }
-
-        .est-tag {
-            font-size: 12px;
-            color: var(--gold);
-            margin-top: 5px;
-            opacity: 0.9;
-        }
     </style>
 </head>
 <body>
@@ -331,14 +336,12 @@
 <div class="container">
     <div class="header">
         <img src="logo.png" alt="M ROOM BARBER LOGO" class="logo-img" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
-        
         <div id="alt-logo" style="display:none; font-size: 40px; color: var(--gold); margin-bottom: 15px;">
             <i class="fas fa-cut"></i>
             <h2 style="font-size: 24px;">M ROOM</h2>
         </div>
-
         <p class="subtitle">Barbershop</p>
-        <div class="est-tag">EST 2019</div>
+        <div class="welcome-msg">مرحبا بكم عندنا</div>
     </div>
 
     <div class="links-container">
@@ -352,7 +355,7 @@
             <i class="fab fa-instagram"></i> INSTAGRAM
         </a>
 
-        <!-- TikTok (Updated Link) -->
+        <!-- TikTok -->
         <a href="https://www.tiktok.com/@goldenbarberr?_r=1&_t=ZS-94gppenfMqG" target="_blank" class="btn tiktok">
             <i class="fab fa-tiktok"></i> TIKTOK
         </a>
@@ -393,8 +396,12 @@
 <div id="wifiModal" class="modal">
     <div class="modal-content">
         <h3 style="color:var(--gold); margin-bottom: 15px; text-transform: uppercase; font-size: 16px;">M ROOM WIFI ACCESS</h3>
-        <img src="https://i.postimg.cc/63L9hzhS/photo-5857188129129827783-y.jpg" style="width:100%; border-radius:10px; border: 1px solid var(--gold);" alt="WiFi QR Code">
-        <p style="font-size: 13px; opacity: 0.8; margin-bottom: 15px; margin-top: 15px;">Scannez pour vous connecter rapidement.</p>
+        
+        <!-- Only the QR Code Image sent by the user -->
+        <img src="https://i.postimg.cc/63L9hzhS/photo-5857188129129827783-y.jpg" class="wifi-qr-only" alt="WiFi QR Code">
+        
+        <p style="font-size: 13px; opacity: 0.8; margin-bottom: 15px;">Scannez pour vous connecter rapidement.</p>
+        
         <div class="close-modal" onclick="closeModal('wifiModal')">Fermer</div>
     </div>
 </div>
@@ -457,6 +464,7 @@
         document.getElementById(modalId).style.display = 'none';
     }
 
+    // Keyboard navigation (PC)
     document.addEventListener('keydown', e => {
         const modal = document.getElementById('fullImageModal');
         if (modal.style.display === 'flex') {
@@ -466,6 +474,7 @@
         }
     });
 
+    // Touch Swipe Logic
     let touchstartX = 0;
     let touchendX = 0;
     const swipeContainer = document.getElementById('swipe-container');
