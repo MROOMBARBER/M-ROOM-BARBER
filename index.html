@@ -38,7 +38,7 @@
 
         body {
             /* Background image */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.postimg.cc/Xq4vMtJp/unnamed.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://i.postimg.cc/Xq4vMtJp/unnamed.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -63,6 +63,7 @@
             border: 1px solid rgba(197, 160, 89, 0.4);
             animation: fadeIn 1s ease-in;
             position: relative;
+            margin: 20px 0;
         }
 
         @keyframes fadeIn {
@@ -71,7 +72,7 @@
         }
 
         .header {
-            padding: 50px 20px 30px;
+            padding: 40px 20px 20px;
             position: relative;
         }
 
@@ -86,14 +87,14 @@
         }
 
         .logo-img {
-            width: 180px;
+            width: 160px;
             height: auto;
             margin-bottom: 10px;
             filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.5));
         }
 
         p.subtitle {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gold);
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -103,7 +104,7 @@
         }
 
         .links-container {
-            padding: 30px 25px;
+            padding: 20px 25px;
         }
 
         .btn {
@@ -111,11 +112,11 @@
             align-items: center;
             text-decoration: none;
             color: white;
-            padding: 16px 20px;
+            padding: 15px 20px;
             border-radius: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             text-transform: uppercase;
@@ -130,7 +131,7 @@
         }
 
         .btn i {
-            font-size: 20px;
+            font-size: 18px;
             margin-right: 15px;
             width: 25px;
             text-align: center;
@@ -142,7 +143,67 @@
         .review { border-color: var(--gold); color: var(--gold); }
         .wifi { border-color: var(--wifi-color); color: var(--wifi-color); }
 
-        /* Modal Styles */
+        /* Styles de la Galerie (Carousel) */
+        .gallery-wrapper {
+            padding: 10px 0 25px;
+            margin-top: 10px;
+        }
+        
+        .gallery-title {
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .gallery-title::before, .gallery-title::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.4;
+        }
+
+        .gallery-scroll {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 15px;
+            padding: 0 35px 15px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-item {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            aspect-ratio: 1/1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Modaux */
         .modal {
             display: none;
             position: fixed;
@@ -166,21 +227,76 @@
             text-align: center;
             max-width: 320px;
             width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
+            position: relative;
         }
 
-        .wifi-qr-only {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin: 10px 0 20px;
-            border: 1px solid rgba(197, 160, 89, 0.5);
-            box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+        /* Plein Écran Slider Animation */
+        #fullImageModal .modal-content {
+            background: transparent;
+            border: none;
+            max-width: 95%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
+
+        #fullImageDisplay {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+            user-select: none;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        /* Animation class applied by JS */
+        .img-fade-in {
+            animation: imgFadeScale 0.4s ease-out forwards;
+        }
+
+        @keyframes imgFadeScale {
+            from {
+                opacity: 0.4;
+                transform: scale(0.92);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 24px;
+            background: rgba(0,0,0,0.6);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            transition: background 0.2s;
+        }
+
+        .nav-arrow:active {
+            background: var(--gold);
+            color: black;
+        }
+
+        .prev-arrow { left: -5px; }
+        .next-arrow { right: -5px; }
 
         .close-modal {
-            margin-top: 10px;
+            margin-top: 20px;
             color: var(--gold);
             cursor: pointer;
             text-transform: uppercase;
@@ -192,9 +308,9 @@
         }
 
         .footer {
-            padding: 25px;
+            padding: 20px;
             font-size: 11px;
-            color: #888;
+            color: #666;
             background: rgba(0, 0, 0, 0.5);
             letter-spacing: 1px;
             font-family: 'Segoe UI', sans-serif;
@@ -251,38 +367,125 @@
         </a>
     </div>
 
+    <!-- Section Galerie (Swipe Gauche Droite) -->
+    <div class="gallery-wrapper">
+        <div class="gallery-title">Notre Galerie</div>
+        <div class="gallery-scroll" id="gallery-scroll">
+            <!-- Images générées par JS -->
+        </div>
+        <div style="font-size: 10px; color: var(--gold); opacity: 0.6; margin-top: -5px; display: flex; justify-content: center; align-items: center; gap: 10px;">
+            <i class="fas fa-chevron-left"></i> SWIPE <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
     <div class="footer">
         &copy; 2026 M ROOM BARBER | ALL RIGHTS RESERVED
     </div>
 </div>
 
-<!-- WiFi Modal -->
+<!-- Modal WiFi -->
 <div id="wifiModal" class="modal">
     <div class="modal-content">
         <h3 style="color:var(--gold); margin-bottom: 15px; text-transform: uppercase; font-size: 16px;">M ROOM WIFI ACCESS</h3>
-        
-        <!-- Only the QR Code Image sent by the user -->
-        <img src="https://i.postimg.cc/63L9hzhS/photo-5857188129129827783-y.jpg" class="wifi-qr-only" alt="WiFi QR Code">
-        
-        <p style="font-size: 13px; opacity: 0.8; margin-bottom: 15px;">Scannez pour vous connecter rapidement.</p>
-        
-        <div class="close-modal" onclick="closeWifiModal()">Fermer</div>
+        <img src="https://i.postimg.cc/63L9hzhS/photo-5857188129129827783-y.jpg" style="width:100%; border-radius:10px; border: 1px solid var(--gold);" alt="WiFi QR Code">
+        <p style="font-size: 13px; opacity: 0.8; margin-bottom: 15px; margin-top: 15px;">Scannez pour vous connecter rapidement.</p>
+        <div class="close-modal" onclick="closeModal('wifiModal')">Fermer</div>
     </div>
 </div>
 
+<!-- Modal Image Plein Écran avec Swipe et Animation -->
+<div id="fullImageModal" class="modal">
+    <div class="modal-content" id="swipe-container">
+        <div class="nav-arrow prev-arrow" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></div>
+        <img id="fullImageDisplay" src="" alt="Vue agrandie">
+        <div class="nav-arrow next-arrow" onclick="changeImage(1)"><i class="fas fa-chevron-right"></i></div>
+    </div>
+    <div class="close-modal" onclick="closeModal('fullImageModal')">Fermer</div>
+</div>
+
 <script>
+    const images = [
+        "https://i.postimg.cc/s23HjV3n/photo-5884097001182399663-y.jpg",
+        "https://i.postimg.cc/1zMC4Lzp/photo-5884097001182399664-y.jpg",
+        "https://i.postimg.cc/hGMyhHGL/photo-5884097001182399665-w.jpg",
+        "https://i.postimg.cc/hGMyhHG8/photo-5884097001182399666-w.jpg",
+        "https://i.postimg.cc/0N9Xk89X/photo-5884097001182399667-y.jpg"
+    ];
+    let currentIndex = 0;
+
+    // Générer la galerie dynamiquement
+    const scrollContainer = document.getElementById('gallery-scroll');
+    images.forEach((src, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.onclick = () => openImageModal(index);
+        item.innerHTML = `<img src="${src}" alt="Coupe ${index + 1}">`;
+        scrollContainer.appendChild(item);
+    });
+
     function openWifiModal() {
         document.getElementById('wifiModal').style.display = 'flex';
     }
 
-    function closeWifiModal() {
-        document.getElementById('wifiModal').style.display = 'none';
+    function openImageModal(index) {
+        currentIndex = index;
+        updateModalImage();
+        document.getElementById('fullImageModal').style.display = 'flex';
     }
 
+    function updateModalImage() {
+        const display = document.getElementById('fullImageDisplay');
+        
+        // Remove animation class
+        display.classList.remove('img-fade-in');
+        
+        // Set new source
+        display.src = images[currentIndex];
+        
+        // Trigger reflow to restart animation
+        void display.offsetWidth;
+        
+        // Add animation class back
+        display.classList.add('img-fade-in');
+    }
+
+    function changeImage(step) {
+        currentIndex += step;
+        if (currentIndex < 0) currentIndex = images.length - 1;
+        if (currentIndex >= images.length) currentIndex = 0;
+        updateModalImage();
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+
+    // Gestion du Swipe tactile dans le modal
+    let touchstartX = 0;
+    let touchendX = 0;
+    const swipeContainer = document.getElementById('swipe-container');
+
+    swipeContainer.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    swipeContainer.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, {passive: true});
+
+    function handleSwipe() {
+        const diff = touchstartX - touchendX;
+        if (Math.abs(diff) > 50) { // Threshold
+            if (diff > 0) changeImage(1);  // Swipe gauche -> image suivante
+            else changeImage(-1);         // Swipe droite -> image précédente
+        }
+    }
+
+    // Fermer les modaux en cliquant sur le fond
     window.onclick = function(event) {
-        let modal = document.getElementById('wifiModal');
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = "none";
         }
     }
 </script>
