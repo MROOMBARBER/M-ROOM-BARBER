@@ -22,6 +22,7 @@
             --whatsapp-color: #25D366;
             --maps-color: #4285F4;
             --instagram-color: #E1306C;
+            --tiktok-color: #00f2ea; /* Couleur TikTok Cyan/Neon */
             --wifi-color: #ffffff;
             --google-red: #EA4335; 
             --pure-black: #000000;
@@ -139,6 +140,7 @@
 
         .whatsapp { border-color: var(--whatsapp-color); color: var(--whatsapp-color); }
         .instagram { border-color: var(--instagram-color); color: var(--instagram-color); }
+        .tiktok { border-color: var(--tiktok-color); color: var(--tiktok-color); }
         .maps { border-color: var(--maps-color); color: var(--maps-color); }
         .review { border-color: var(--gold); color: var(--gold); }
         .wifi { border-color: var(--wifi-color); color: var(--wifi-color); }
@@ -350,6 +352,11 @@
             <i class="fab fa-instagram"></i> INSTAGRAM
         </a>
 
+        <!-- TikTok (Updated Link) -->
+        <a href="https://www.tiktok.com/@goldenbarberr?_r=1&_t=ZS-94gppenfMqG" target="_blank" class="btn tiktok">
+            <i class="fab fa-tiktok"></i> TIKTOK
+        </a>
+
         <!-- WiFi Button -->
         <div onclick="openWifiModal()" class="btn wifi">
             <i class="fas fa-wifi"></i> WIFI FREE
@@ -392,7 +399,7 @@
     </div>
 </div>
 
-<!-- Modal Image Plein Écran avec Navigation -->
+<!-- Modal Image Plein Écran -->
 <div id="fullImageModal" class="modal">
     <div class="modal-content" id="swipe-container">
         <div class="nav-arrow prev-arrow" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></div>
@@ -412,7 +419,6 @@
     ];
     let currentIndex = 0;
 
-    // Générer la galerie
     const scrollContainer = document.getElementById('gallery-scroll');
     images.forEach((src, index) => {
         const item = document.createElement('div');
@@ -436,7 +442,7 @@
         const display = document.getElementById('fullImageDisplay');
         display.classList.remove('img-fade-in');
         display.src = images[currentIndex];
-        void display.offsetWidth; // Reflow
+        void display.offsetWidth;
         display.classList.add('img-fade-in');
     }
 
@@ -451,7 +457,6 @@
         document.getElementById(modalId).style.display = 'none';
     }
 
-    // NOUVEAU : Navigation au clavier (PC)
     document.addEventListener('keydown', e => {
         const modal = document.getElementById('fullImageModal');
         if (modal.style.display === 'flex') {
@@ -461,7 +466,6 @@
         }
     });
 
-    // Gestion du Swipe (Tactile)
     let touchstartX = 0;
     let touchendX = 0;
     const swipeContainer = document.getElementById('swipe-container');
