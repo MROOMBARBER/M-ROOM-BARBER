@@ -252,7 +252,6 @@
             transition: transform 0.3s ease-out, opacity 0.3s ease-out;
         }
 
-        /* Animation class applied by JS */
         .img-fade-in {
             animation: imgFadeScale 0.4s ease-out forwards;
         }
@@ -367,7 +366,7 @@
         </a>
     </div>
 
-    <!-- Section Galerie (Swipe Gauche Droite) -->
+    <!-- Section Galerie -->
     <div class="gallery-wrapper">
         <div class="gallery-title">Notre Galerie</div>
         <div class="gallery-scroll" id="gallery-scroll">
@@ -393,7 +392,7 @@
     </div>
 </div>
 
-<!-- Modal Image Plein Écran avec Swipe et Animation -->
+<!-- Modal Image Plein Écran avec Navigation -->
 <div id="fullImageModal" class="modal">
     <div class="modal-content" id="swipe-container">
         <div class="nav-arrow prev-arrow" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></div>
@@ -413,7 +412,7 @@
     ];
     let currentIndex = 0;
 
-    // Générer la galerie dynamiquement
+    // Générer la galerie
     const scrollContainer = document.getElementById('gallery-scroll');
     images.forEach((src, index) => {
         const item = document.createElement('div');
@@ -435,17 +434,9 @@
 
     function updateModalImage() {
         const display = document.getElementById('fullImageDisplay');
-        
-        // Remove animation class
         display.classList.remove('img-fade-in');
-        
-        // Set new source
         display.src = images[currentIndex];
-        
-        // Trigger reflow to restart animation
-        void display.offsetWidth;
-        
-        // Add animation class back
+        void display.offsetWidth; // Reflow
         display.classList.add('img-fade-in');
     }
 
@@ -460,7 +451,17 @@
         document.getElementById(modalId).style.display = 'none';
     }
 
-    // Gestion du Swipe tactile dans le modal
+    // NOUVEAU : Navigation au clavier (PC)
+    document.addEventListener('keydown', e => {
+        const modal = document.getElementById('fullImageModal');
+        if (modal.style.display === 'flex') {
+            if (e.key === 'ArrowRight') changeImage(1);
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'Escape') closeModal('fullImageModal');
+        }
+    });
+
+    // Gestion du Swipe (Tactile)
     let touchstartX = 0;
     let touchendX = 0;
     const swipeContainer = document.getElementById('swipe-container');
@@ -476,13 +477,12 @@
 
     function handleSwipe() {
         const diff = touchstartX - touchendX;
-        if (Math.abs(diff) > 50) { // Threshold
-            if (diff > 0) changeImage(1);  // Swipe gauche -> image suivante
-            else changeImage(-1);         // Swipe droite -> image précédente
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) changeImage(1);
+            else changeImage(-1);
         }
     }
 
-    // Fermer les modaux en cliquant sur le fond
     window.onclick = function(event) {
         if (event.target.classList.contains('modal')) {
             event.target.style.display = "none";
